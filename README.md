@@ -46,7 +46,7 @@ PhototSynthesis is a desktop application built with Java Swing for viewing and e
 
 .
 ├── BmpEditorApp
-│   ├── App.java                 # Main application entry point
+│   ├── App.java                 # Main application entry point (Console version)
 │   ├── Filters                  # Image filter implementations
 │   │   ├── blue.java
 │   │   ├── brightness.java
@@ -77,14 +77,16 @@ PhototSynthesis is a desktop application built with Java Swing for viewing and e
 │   │   ├── BmpImage.java        # Represents the BMP image (header + pixel data)
 │   │   ├── HSV.java             # HSV color model representation
 │   │   └── Pixel.java           # RGB pixel data
-│   └── PhotoEditorUI.java       # Main GUI class
-
-
+│   └── PhotoEditorUI.java       # Main GUI class & entry point
+└── production
+└── BMPeditor
+├── App.class
 ---
 ## ⚙️ Prerequisites
 
 * Java Development Kit (JDK) version 21 or higher.
 
+---
 ---
 ## 🚀 Getting Started
 
@@ -95,38 +97,36 @@ PhototSynthesis is a desktop application built with Java Swing for viewing and e
     ```
 
 2.  **Compile the Java files:**
-    Navigate to the directory containing the `BmpEditorApp` folder (the root of your source code for this module).
-    A simple way to compile, assuming all source files are within the `BmpEditorApp` directory and its subdirectories and properly declare their packages:
-
-    * **If `App.java` and other files are directly in `BmpEditorApp` and sub-packages:**
-        You would typically compile from the directory *above* `BmpEditorApp` or ensure your classpath is set. For example, if your project root is `BMPeditor` and `BmpEditorApp` is inside it:
-        ```bash
-        cd BMPeditor # Or wherever your project root is
-        javac BmpEditorApp/*.java BmpEditorApp/Filters/*.java BmpEditorApp/imageProcessors/*.java BmpEditorApp/io/*.java BmpEditorApp/Kernels/*.java BmpEditorApp/Models/*.java
-        ```
+    You have two main applications: a GUI-based editor (`PhotoEditorUI.java`) and a console-based one (`App.java`).
     * **Using an IDE (Recommended):**
-        Open the project in an IDE like IntelliJ IDEA, Eclipse, or VS Code. Most IDEs will handle compilation automatically or with a simple "Build Project" command.
-
-    * **User-provided compile command (may require being in the correct directory or adjusting for packages):**
-        ```bash
-        javac *.java
-        ```
-        *(Note: This command is very general. For a project with packages, you'll typically need to specify paths or compile from a source root directory, e.g., `javac BmpEditorApp/App.java`, or use an IDE's build system).*
+        Open the project in an IDE like IntelliJ IDEA, Eclipse, or VS Code. Most IDEs will handle compilation automatically or with a simple "Build Project" command. This is the easiest way to manage dependencies and packages.
+    * **Command Line Compilation:**
+        Navigate to your project's root directory (the one that contains the `BmpEditorApp` folder).
+        * To compile the GUI application (`PhotoEditorUI.java` and its dependencies):
+            ```bash
+            javac BmpEditorApp/PhotoEditorUI.java
+            ```
+            *(This command requires that all classes imported by `PhotoEditorUI.java`, such as those in `Filters`, `Models`, etc., are correctly located within their respective sub-packages inside `BmpEditorApp` and are accessible to the compiler.)*
+        * To compile the console application (`App.java` and its dependencies):
+            ```bash
+            javac BmpEditorApp/App.java
+            ```
+        * To compile all Java files within the `BmpEditorApp` package and its sub-packages:
+            ```bash
+            javac BmpEditorApp/*.java BmpEditorApp/Filters/*.java BmpEditorApp/imageProcessors/*.java BmpEditorApp/io/*.java BmpEditorApp/Kernels/*.java BmpEditorApp/Models/*.java
+            ```
 
 3.  **Run the application:**
-    Assuming `App.java` in the `BmpEditorApp` package is your main entry point (which instantiates `PhotoEditorUI`):
-    From the directory *containing* the `BmpEditorApp` compiled output (e.g., if your compiled classes are in `out/production/BMPeditor` relative to project root, you might run from `out/production/BMPeditor`'s parent, or adjust classpath):
-
-    ```bash
-    java BmpEditorApp.App
-    ```
-    Or, if `PhotoEditorUI.java` itself contained a `main` method and was intended to be the entry point (and assuming it's in the default package or `BmpEditorApp` package and compiled correctly):
-    ```bash
-    java PhotoEditorUI # If in default package
-    # or
-    java BmpEditorApp.PhotoEditorUI # If in BmpEditorApp package
-    ```
-    *(Based on your input `java PhotoEditorUI` and the structure, ensure `PhotoEditorUI` has a `main` method, or adjust to run `BmpEditorApp.App` if `App.java` is the entry point.)*
+    After successful compilation, run the applications from your project's root directory (the one containing the `BmpEditorApp` folder where the compiled `.class` files corresponding to their packages should reside).
+    * **To run the GUI Photo Editor:**
+        ```bash
+        java BmpEditorApp.PhotoEditorUI
+        ```
+    * **To run the console-driven application (offers additional features/filters):**
+        ```bash
+        java BmpEditorApp.App
+        ```
+        *(Note: For these commands to work, Java must be able to find the compiled `.class` files. If you compile into a separate output directory like `out`, you'll need to adjust your classpath accordingly when running, e.g., `java -cp out/production/BMPeditor BmpEditorApp.PhotoEditorUI`.)*
 
 ---
 ## 🛠️ How to Use
