@@ -29,11 +29,6 @@
   - Deep copy of pixel data
   - Validates image header and pixel grid consistency
 
-## 🖼️ Screenshots
-
-> *(Add screenshots or GIFs here once available)*
-
----
 
 ## 🧪 How It Works
 
@@ -59,3 +54,5 @@ To compile:
 
 ```bash
 javac *.java
+java PhotoEditorUI
+```
