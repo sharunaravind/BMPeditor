@@ -43,7 +43,7 @@ PhototSynthesis is a desktop application built with Java Swing for viewing and e
 
 ---
 ## 📂 Project Structure
-
+```text
 .
 ├── BmpEditorApp
 │   ├── App.java                 # Main application entry point (Console version)
@@ -81,6 +81,7 @@ PhototSynthesis is a desktop application built with Java Swing for viewing and e
 └── production
 └── BMPeditor
 ├── App.class
+```
 ---
 ## ⚙️ Prerequisites
 
@@ -92,7 +93,7 @@ PhototSynthesis is a desktop application built with Java Swing for viewing and e
 
 1.  **Clone the repository (or download the source code):**
     ```bash
-    git clone <your-repository-url>
+    git clone https://github.com/sharunaravind/BMPeditor
     cd <repository-directory>
     ```
 
